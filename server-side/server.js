@@ -25,6 +25,7 @@ app.post('/issues',(req,res)=>{
 // Read: requests a JSON object & prints it out
 app.get('/issues',(req,res)=>{
    res.json(issues);
+   res.status(200).send();
 });
 
 //Update: sends a JSON object to the server
@@ -41,10 +42,9 @@ app.put('/issues/:id',(req, res)=>{
 
 app.delete('/issues/:id',(req, res)=>{
     const {id} = req.params;
-    const deleteIssues = req.body;
-    issues = issues.map(issue => (issue.id === parseInt(id) ? deleteIssues : issue));
+    issues = issues.filter(issue => (issue.id !== parseInt(id)));
     console.log('Delete Issue:', deleteIssues);
-    res.json(deleteIssues);
+    res.status(204).send();
 })
 
 app.listen(PORT, ()=>{
