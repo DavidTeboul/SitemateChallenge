@@ -68,6 +68,7 @@ discribe('Issue API', () =>{
         expect(response.body).toEqual(updateIssue);
     }) ;
 
+
     it('Delet Issue ?', async()=>{
         const response = await request(app).delete('/issues/1');
         expect(response.statusCode).toBe(204);
