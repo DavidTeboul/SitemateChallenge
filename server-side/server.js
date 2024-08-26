@@ -23,7 +23,6 @@ app.post('/issues',(req,res)=>{
 });
 
 // Read: requests a JSON object & prints it out
-
 app.get('/issues',(req,res)=>{
    res.json(issues);
 });
